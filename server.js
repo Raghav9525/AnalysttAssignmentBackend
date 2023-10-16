@@ -8,13 +8,12 @@ const PORT = process.env.PORT || 5000
 
 // Use cors middleware with specific configuration
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with the URL of your frontend application
-    methods: 'GET,,POST,DELETE',
-    credentials: true,
-}));
+    origin: "*"
+  }));
 
 app.get("/",async(req,res)=>{
     try{
+        console.log("requested to / route");
         const response = await axios.get('https://jsonplaceholder.typicode.com/users');
         const jsonData = response.data;
         res.json(jsonData);
